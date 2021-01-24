@@ -1,30 +1,26 @@
 package com.example.beginer;
 
-import org.junit.jupiter.api.Test;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import java.io.IOException;
 
+import java.io.Reader;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
-class BeginerApplicationTests {
+public class BeginerApplicationTests {
 
     @Test
-    void contextLoads() {
-    }
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Test
-    public void contextLoad(){
-         List<Map<String,Object>> res =jdbcTemplate.queryForList("select * from myTest");
-         System.out.println("rest "+res.size());
-    }
-    @Test
-    public void updateTest(){
-        jdbcTemplate.execute("update myTest set Name='gg' where Id=1");
-        System.out.println("rest success");
+    public void Run1(){
+        System.out.println(new Date());
     }
 }
