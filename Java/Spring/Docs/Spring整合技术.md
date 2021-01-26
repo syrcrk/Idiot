@@ -232,3 +232,68 @@ public class BeginerApplication
 ```
 
 在Application 那里添加MapperScan， 并设在映射文件的包名， 剩下的就是常规操作，可以看Beginer 工程
+
+
+
+### anotation版
+
+配置application.yml
+
+```
+server:
+  port: 8080
+spring:
+  datasource:
+      name: test
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+```
+
+手动添加模型文件  AppMessage.java
+
+添加Mapper文件
+
+```
+@Mapper
+public interface AppMessageMapper {
+    @Insert("INSERT INTO messages(id, message, senddate) VALUES(#{id}, #{message}, #{senddate})")
+    int insert(@Param("id") String id, @Param("message")String message, @Param("senddate")Date senddate);
+
+    @Select("SELECT * FROM messages WHERE id = #{id}")
+    AppMessage selectByPrimaryKey(@Param("id")String id);
+
+}
+```
+
+新建测试
+
+```
+@Autowired
+AppMessageMapper mapper;
+
+@Test
+void testAdd(){
+    mapper.insert("456","wmd",new Date());
+}
+@Test
+void testFind(){
+    AppMessage message = mapper.selectByPrimaryKey("crk");
+    System.out.println(message.getMessage()+" "+message.getSenddate());
+}
+```
+
