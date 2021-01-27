@@ -1,3 +1,5 @@
+
+
 # springBoot整合技术
 
 ## navicat连接问题
@@ -294,6 +296,35 @@ void testAdd(){
 void testFind(){
     AppMessage message = mapper.selectByPrimaryKey("crk");
     System.out.println(message.getMessage()+" "+message.getSenddate());
+}
+```
+
+## QuartZ 定时器整合
+
+
+
+添加依赖，并在代码中加入注释
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-quartz</artifactId>
+</dependency>
+```
+
+```
+@Component
+@Configurable
+@EnableScheduling
+public class MyJob {
+    @Scheduled(fixedRate = 1000*5)
+    public void reportCurrentTime(){
+        System.out.println("Fixed Time:"+new Date());
+    }
+    @Scheduled(cron="*/5 * *  * * *")
+    public void reportCurrentByCron(){
+        System.out.println("reportCurrentByCron Time:"+new Date());
+    }
 }
 ```
 
