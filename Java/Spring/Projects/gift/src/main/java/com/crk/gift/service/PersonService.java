@@ -22,19 +22,21 @@ public class PersonService {
     public int addPerson(Person p) {
         return personDAO.insertPerson(p);
     }
-    public List<Person> selectAllPeople(){
+
+    public List<Person> selectAllPeople() {
         return personDAO.selectAllPerson();
     }
 
-    public Optional<Person> selectPersonByID(UUID id){
+    public Optional<Person> selectPersonByID(UUID id) {
         return personDAO.selectPersonByID(id);
     }
 
-    public int deletePersonByID(UUID id){
+    public int deletePersonByID(UUID id) {
         return personDAO.deletePersonById(id);
     }
-    public int updatePersonByID(UUID id,Person person){
-        return personDAO.updatePersonById(id,person);
+
+    public int updatePersonByID(UUID id, Person person) {
+        return personDAO.updatePersonById(id, person);
     }
 
 

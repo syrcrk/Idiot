@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDAO {
     @Override
@@ -16,8 +17,8 @@ public class PersonDataAccessService implements PersonDAO {
 
     @Override
     public List<Person> selectAllPerson() {
-        ArrayList res=new ArrayList<Person>();
-        res.add(new Person(UUID.randomUUID(),"name xxxxxx"));
+        ArrayList res = new ArrayList<Person>();
+        res.add(new Person(UUID.randomUUID(), "name xxxxxx"));
         return res;
     }
 

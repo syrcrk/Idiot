@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-@Service(value="appService")
-public class AppMessageService  implements  IAppMessageService{
+
+@Service(value = "appService")
+public class AppMessageService implements IAppMessageService {
     @Autowired
     AppMessageMapper mapper;
 

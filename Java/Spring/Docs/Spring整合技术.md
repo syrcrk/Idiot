@@ -328,3 +328,113 @@ public class MyJob {
 }
 ```
 
+
+
+## Redis整合
+
+下载redis window ，现在放在C盘，并启动server
+
+redis-server.exe redis.windows.conf
+
+启动client 测试
+
+redis-cli.exe -h 127.0.0.1 -p 6379
+
+set crk   123
+
+get crk
+
+配置application yml
+
+```
+spring:
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 1
+        max-idle: 8
+        min-idle: 8
+    timeout: 0
+```
+
+配置pom
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-redis</artifactId>
+    <version>1.4.7.RELEASE</version>
+</dependency>
+```
+
+添加测试方法
+
+```
+@Autowired
+StringRedisTemplate tm;
+@Test
+void Test1() {
+    tm.opsForValue().set("crk","111");
+    String res=tm.opsForValue().get("crk");
+    System.out.println(res);
+}
+```
+
+结束，比较简单
+
+
+
+## ActiveMQ
+
+#### MQ 考虑的问题，也是学习的方向
+
+高可用  
+集群 容错
+持久化
+定时发布 延迟发布
+签收机制
+
+
+
+#### 消息类型
+
+MapMessage
+TextMessage
+ObjectMessage
+BytesMessage
+
+成果  解耦 削峰 
+主题消息： 1对多，一条消息发多个人
+队列消息： 1对1 一条消息给一个人？ 多个发送端 多个接收端，
+
+
+
+ActiveMQConnectionFactory
+Connection
+Session
+Queue  Producer
+
+session>> create message
+producer>> send message
+
+#### 开始
+
+activemq start，   http://localhost:8161/  ，   tcp://crk-PC:61616
+
+ActiveMQ 默认用户名和密码用户名：admin 密码：admin 可以在/conf/users.properties中寻找。
+
+
+
+#### 事务
+
+事务倾向发送方， 签收倾向于接受方。
+
+手动签收需要  session.commit
+
+
+

@@ -8,6 +8,7 @@ import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.io.IOException;
 
 import java.io.Reader;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class BeginerApplicationTests {
 
     @Test
-    public void Run1(){
+    public void Run1() {
         System.out.println(new Date());
     }
 }

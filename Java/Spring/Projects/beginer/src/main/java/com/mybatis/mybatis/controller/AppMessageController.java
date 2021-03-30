@@ -18,13 +18,13 @@ public class AppMessageController {
 
     @ResponseBody
     @RequestMapping(value = "/add", produces = {"application/json;charset=UTF-8"})
-    public int addUser(AppMessage user){
+    public int addUser(AppMessage user) {
         return appMessageService.addMessage(user);
     }
 
     @ResponseBody
     @RequestMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
-    public Object findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize){
+    public Object findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
 
         return appMessageService.getAllMessage();//pageNum,pageSize
     }

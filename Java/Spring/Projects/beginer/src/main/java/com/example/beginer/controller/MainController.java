@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("main")
 public class MainController {
     @RequestMapping("crk")
-    public String defaultRestult(){
+    public String defaultRestult() {
         return "123";
     }
 }

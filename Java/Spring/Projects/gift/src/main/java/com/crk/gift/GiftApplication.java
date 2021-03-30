@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class GiftApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(GiftApplication.class, args);
-}
+    public static void main(String[] args) {
+        SpringApplication.run(GiftApplication.class, args);
+    }
 //
 //	@Bean
 //	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {

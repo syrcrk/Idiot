@@ -10,9 +10,9 @@ public class Person {
     @NotBlank
     private final String name;
 
-    public Person(@JsonProperty("id") UUID id,@JsonProperty("name") String name){
-        this.id=id;
-        this.name=name;
+    public Person(@JsonProperty("id") UUID id, @JsonProperty("name") String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public UUID getId() {

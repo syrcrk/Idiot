@@ -17,27 +17,30 @@ public class PersonController {
     public PersonController(PersonService service) {
         this.service = service;
     }
+
     @PostMapping
-    public void addPerson(@Valid @NotNull @RequestBody  Person person){
+    public void addPerson(@Valid @NotNull @RequestBody Person person) {
         System.out.println("ADD PERSON");
         service.addPerson(person);
     }
 
     @GetMapping
-    public List<Person> getAllZombie(){
+    public List<Person> getAllZombie() {
         return service.selectAllPeople();
     }
 
-    @GetMapping(path="{id}")
-    public Person findPerson(@PathVariable("id") UUID id){
+    @GetMapping(path = "{id}")
+    public Person findPerson(@PathVariable("id") UUID id) {
         return service.selectPersonByID(id).orElse(null);
     }
-    @DeleteMapping(path="{id}")
-    public void DeletePerson(@PathVariable("id")  UUID id){
+
+    @DeleteMapping(path = "{id}")
+    public void DeletePerson(@PathVariable("id") UUID id) {
         service.deletePersonByID(id);
     }
-    @PutMapping(path="{id}")
-    public void UpdatePerson(@PathVariable("id") UUID id,@Valid @NotNull @RequestBody Person person){
-        service.updatePersonByID(id,person);
+
+    @PutMapping(path = "{id}")
+    public void UpdatePerson(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Person person) {
+        service.updatePersonByID(id, person);
     }
 }

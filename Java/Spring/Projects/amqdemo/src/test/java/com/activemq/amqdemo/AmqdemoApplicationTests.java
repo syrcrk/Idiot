@@ -1,10 +1,10 @@
-package com.crk.gift;
+package com.activemq.amqdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GiftApplicationTests {
+class AmqdemoApplicationTests {
 
     @Test
     void contextLoads() {

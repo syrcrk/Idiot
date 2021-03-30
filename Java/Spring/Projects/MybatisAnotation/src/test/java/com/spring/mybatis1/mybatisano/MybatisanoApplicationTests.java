@@ -14,12 +14,13 @@ class MybatisanoApplicationTests {
     AppMessageMapper mapper;
 
     @Test
-    void testAdd(){
-        mapper.insert("456","wmd",new Date());
+    void testAdd() {
+        mapper.insert("456", "wmd", new Date());
     }
+
     @Test
-    void testFind(){
+    void testFind() {
         AppMessage message = mapper.selectByPrimaryKey("crk");
-        System.out.println(message.getMessage()+" "+message.getSenddate());
+        System.out.println(message.getMessage() + " " + message.getSenddate());
     }
 }
